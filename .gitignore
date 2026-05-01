@@ -1,0 +1,16 @@
+# Inbox — raw web captures, may contain copyrighted content
+00_Inbox/
+
+# Archive — processed source files, not for publication
+99_Archive/
+
+# Obsidian workspace settings
+.obsidian/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak

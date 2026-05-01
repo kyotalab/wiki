@@ -1,0 +1,187 @@
+# LLM Wiki — Cursor Rules
+
+## Project Overview
+This is a personal knowledge wiki built from web sources (primarily Japanese).
+All wiki content must be written in English.
+Raw source material in Japanese is processed through Cursor and stored as English notes.
+
+---
+
+## Language Policy
+- All notes must be written in English.
+- Input sources may be in Japanese; always translate, paraphrase, and synthesize — never copy raw Japanese text into wiki notes.
+- Frontmatter fields (title, tags, source, created) must be in English.
+- Inline comments or personal memos may be in Japanese only inside Inbox files.
+
+---
+
+## Folder Structure
+```
+Wiki/
+├── _templates/      # Note templates. Do not modify without updating this rules file.
+├── 00_Inbox/           # Raw captures (Japanese OK). Temporary — process and archive.
+├── 01_Concepts/        # One concept per file. Definitions, mechanisms, key properties.
+├── 02_Topics/          # Multi-concept synthesis. How things connect and why they matter.
+├── 03_Atlas/           # Index notes, concept maps (Mermaid), MOCs.
+├── 04_Snippets/        # Copy-paste ready code. Minimal explanation — link to Concepts for depth.
+└── 99_Archive/         # Processed Inbox files. Do not edit after archiving.
+```
+
+---
+
+## File Naming
+- Use lowercase slugs with hyphens only.
+- No spaces, no Japanese characters, no special characters.
+- Examples:
+  - `transformer-architecture.md`
+  - `retrieval-augmented-generation.md`
+  - `attention-mechanism.md`
+
+---
+
+## Frontmatter (Required for all Concepts and Topics)
+```yaml
+---
+title: ""           # Title Case, English
+tags: []            # max 3 tags, lowercase, hyphenated (e.g., llm, fine-tuning)
+source: ""          # Original URL(s), comma-separated if multiple
+created: YYYY-MM-DD
+related: []         # Linked note slugs (optional)
+---
+```
+
+---
+
+## Note Processing: Inbox → Wiki
+
+When asked to process an Inbox file, follow these steps:
+
+1. **Identify the core concept or topic** from the source material.
+2. **Determine note type**: Concept (single idea) or Topic (synthesis of multiple ideas).
+3. **Translate and paraphrase** all content into English. Do not transcribe.
+4. **Extract key concepts** and create [[wikilinks]] to existing or future notes.
+5. **Generate frontmatter** with appropriate slug, tags (max 3), and source URL.
+6. **Save** to the correct folder (Concepts/ or Topics/).
+7. **Move the original Inbox file** to Archive/ with no modifications.
+
+---
+
+## Concept Notes (`01_Concepts/`)
+- One concept per file.
+- Structure:
+  1. One-sentence definition (what it is)
+  2. How it works (mechanism)
+  3. Why it matters (significance)
+  4. Related concepts (wikilinks)
+- Length: 200–500 words. Be concise.
+- No bullet lists for the main body — use short paragraphs.
+
+---
+
+## Topic Notes (`02_Topics/`)
+- Synthesize multiple concepts around a theme.
+- Structure:
+  1. Overview (what this topic covers and why)
+  2. Key concepts (with wikilinks)
+  3. How they connect (the insight — not just a list)
+  4. Open questions or further reading
+- Length: 400–800 words.
+
+---
+
+## Atlas Notes (`03_Atlas/`)
+- Index notes (MOC): list of related notes with one-line descriptions.
+- Concept maps: use Mermaid diagrams.
+- These are navigation aids, not content notes.
+
+---
+
+## Snippet Notes (`04_Snippets/`)
+- Copy-paste ready code that works as-is or with minimal modification.
+- One snippet per file. Focus on a single, concrete use case.
+- Structure:
+  1. One-line description (what it does)
+  2. Code block (the snippet itself)
+  3. Usage Notes (prerequisites, key parameters, gotchas — keep it short)
+  4. Related concepts (wikilinks to Concepts/ for deeper explanation)
+- Explanation is minimal by design — link to Concept notes for depth.
+- File name should reflect the use case: `openai-api-streaming.md`, `langchain-rag-basic.md`.
+
+---
+
+## Wikilinks
+- Always use `[[slug]]` format for internal links.
+- If a target note does not exist yet, create the link anyway (it becomes a stub placeholder).
+- Add context around the link — avoid naked links with no surrounding explanation.
+
+---
+
+## Style Guide
+- Write in plain, precise English.
+- Prefer short paragraphs over bullet lists for explanations.
+- Avoid filler phrases ("It is important to note that...", "In conclusion...").
+- Define acronyms on first use: "Retrieval-Augmented Generation (RAG)".
+- Use inline code formatting for model names, parameters, and file names.
+
+---
+
+## Tagging Rules
+- Max 3 tags per note.
+- Tags must be lowercase and hyphenated.
+- Use consistent vocabulary — check Atlas/ index before introducing a new tag.
+- Preferred tag categories: domain (e.g., `llm`, `cv`, `nlp`), type (e.g., `architecture`, `training`, `evaluation`), status (e.g., `stub`).
+
+---
+
+## Image Policy
+- Do not carry over images from Inbox files into wiki notes.
+- If a diagram is essential to understanding, recreate it as a Mermaid diagram.
+- If recreation is not possible, reference the original image as an external link: `![alt](https://original-url/image.png)`
+- Never store image files in the Wiki repository. The `_assets/` folder is a last resort only.
+
+---
+
+## Commands (use these as prompts to Cursor)
+
+| Command | Action |
+|--------|--------|
+| `Process this inbox note` | Run full Inbox → Wiki pipeline on the current file |
+| `Create concept note: [topic]` | Generate a new Concept note from scratch |
+| `Create topic note: [theme]` | Generate a new Topic note synthesizing related concepts |
+| `Create snippet note: [use case]` | Generate a new Snippet note with a working code example |
+| `Update atlas for [tag]` | Regenerate the index note for a given tag |
+| `Find related notes: [concept]` | List existing notes that should link to this concept |
+| `Generate mermaid map: [theme]` | Create a Mermaid concept map for 03_Atlas/ |
+
+---
+
+## Prompt: Create snippet note
+
+Use this prompt when running `Create snippet note: [use case]` against a Concept or Topic note.
+
+```
+You are building a Snippet note for a technical wiki.
+The source is the current Concept or Topic note shown below.
+
+Your task:
+1. Identify the most practical, reusable code use case described or implied by the source note.
+2. Write a working code snippet for that use case.
+3. Output a complete Snippet note using the template below.
+
+Rules for the code:
+- The code must be practical and immediately usable with minimal modification.
+- Include error handling where failure is reasonably likely (API calls, file I/O, network, parsing).
+- Add inline comments only where the logic is non-obvious. Do not over-comment.
+- Use the simplest approach that still works in a real context — avoid toy examples.
+- If the source note implies multiple use cases, pick the single most useful one.
+  Additional use cases should be listed in "Usage Notes" as variations, not separate code blocks.
+
+Rules for the note:
+- One-line description: what the code does, not what the concept is.
+- Usage Notes: prerequisites (libraries, env vars, etc.), key parameters to change, and known gotchas.
+  Keep this to 3–5 bullet points. Link to the source note for conceptual depth.
+- File name: lowercase slug reflecting the use case (e.g., openai-chat-streaming.md).
+- Tags: max 3, consistent with existing wiki tags.
+- Related: always link back to the source Concept or Topic note.
+
+Output format (fill in all fields):
