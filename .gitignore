@@ -4,6 +4,9 @@
 # Archive — processed source files, not for publication
 99_Archive/
 
+# _templates — note templates
+_templates/
+
 # Obsidian workspace settings
 .obsidian/
 
