@@ -1,7 +1,7 @@
 ---
 title: "AI-Driven Development Overview"
 tags: [llm, workflow, methodology]
-source: "00_Inbox/AI-driven-development-methodology-docs/00_overview.md"
+source: "99_Archive/AI-driven-development-methodology-docs/00_overview.md"
 created: 2026-05-05
 related: [ai-driven-development, specification-first-ai-development, cursor-rules-context-management, ai-driven-implementation-cycle, ai-development-session-workflow]
 ---

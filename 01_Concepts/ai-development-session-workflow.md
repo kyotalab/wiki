@@ -1,7 +1,7 @@
 ---
 title: "AI Development Session Workflow"
 tags: [workflow, git, llm]
-source: "00_Inbox/AI-driven-development-methodology-docs/04_workflow.md"
+source: "99_Archive/AI-driven-development-methodology-docs/04_workflow.md"
 created: 2026-05-05
 related: [ai-driven-development, ai-driven-development-overview, cursor-rules-context-management, ai-driven-implementation-cycle]
 ---

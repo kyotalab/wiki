@@ -1,7 +1,7 @@
 ---
 title: "Cursor Rules Context Management"
 tags: [llm, cursor, context]
-source: "00_Inbox/AI-driven-development-methodology-docs/02_cursor_rules.md"
+source: "99_Archive/AI-driven-development-methodology-docs/02_cursor_rules.md"
 created: 2026-05-05
 related: [ai-driven-development, ai-driven-development-overview, specification-first-ai-development, ai-development-session-workflow]
 ---

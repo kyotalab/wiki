@@ -1,7 +1,7 @@
 ---
 title: "Specification-First AI Development"
 tags: [llm, specification, workflow]
-source: "00_Inbox/AI-driven-development-methodology-docs/01_spec_design.md"
+source: "99_Archive/AI-driven-development-methodology-docs/01_spec_design.md"
 created: 2026-05-05
 related: [ai-driven-development, ai-driven-development-overview, cursor-rules-context-management, ai-driven-implementation-cycle]
 ---
