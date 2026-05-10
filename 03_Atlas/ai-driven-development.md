@@ -17,12 +17,13 @@ This map organizes the AI-driven development methodology in this wiki, from high
 | [[cursor-rules-context-management]] | Describes how `.cursor/rules/` preserves project context across chat resets. |
 | [[ai-driven-implementation-cycle]] | Covers the per-feature execution loop: implement, review, build, verify, and commit. |
 | [[ai-development-session-workflow]] | Defines session-level operating rhythm, tool boundaries, and Git hygiene. |
+| [[claude-project-instructions-cursor-handoff]] | Describes a project-level Claude brief that routes implementation to Cursor via structured handoff prompts. |
 
 ## Topics
 
 | Note | Summary |
 |------|---------|
-| None yet. | Create a Topic note when cross-concept synthesis is needed. |
+| [[personal-ios-development-claude-cursor-playbook]] | End-to-end solo iOS practice from idea language to App Store, aligned with the core methodology. |
 
 ## Concept Map
 
@@ -34,6 +35,13 @@ graph TD
     C --> D
     D --> E[[ai-development-session-workflow]]
     C --> E
+    A --> F[[claude-project-instructions-cursor-handoff]]
+    F --> C
+    F --> D
+    A --> T[[personal-ios-development-claude-cursor-playbook]]
+    T --> B
+    T --> C
+    T --> F
 ```
 
 ## Open Stubs
